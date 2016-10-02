@@ -109,6 +109,7 @@
 #include "task.h"
 #include "semphr.h"
 
+#include "partest.h"
 
 
 /* Priorities at which the tasks are created. */

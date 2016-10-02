@@ -29,7 +29,7 @@
 
 #include "iodefine.h"
 #include <stdint.h>
-
+#include "partest.h"
 
 
 /*
@@ -44,7 +44,7 @@ void vApplicationIdleHook( void );
 void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName );
 void vApplicationTickHook( void );
 
-
+extern void main_blinky(void);
 
 
 #ifdef CPPAPP
