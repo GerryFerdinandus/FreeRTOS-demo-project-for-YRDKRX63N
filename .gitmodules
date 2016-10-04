@@ -3,4 +3,4 @@
 	url = https://github.com/GerryFerdinandus/FreeRTOS.git
 [submodule "submodules/YRDKRX63N_GCC"]
 	path = submodules/YRDKRX63N_GCC
-	url = https://github.com/GerryFerdinandus/Board-Specific-Peripheral-for-YRDKRX63N.git
+	url = https://github.com/GerryFerdinandus/Board-Support-Package-for-YRDKRX63N.git
