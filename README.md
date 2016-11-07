@@ -4,7 +4,7 @@ The original FreeRTOS blinky demo project is modified to make it work with GCC c
 ---
 
 ## Development tools: ##
-  * IDE: [e2 studio 5.1](https://www.renesas.com/en-us/products/software-tools/tools/ide/e2studio.html)
+  * IDE: [e2 studio 5.2](https://www.renesas.com/en-us/products/software-tools/tools/ide/e2studio.html)
   * Compiler: [GNURX v16.01](https://gcc-renesas.com)
 
 ---

@@ -1,6 +1,6 @@
-[submodule "submodules/FreeRTOS"]
-	path = submodules/FreeRTOS
-	url = https://github.com/GerryFerdinandus/FreeRTOS.git
-[submodule "submodules/YRDKRX63N_GCC"]
-	path = submodules/YRDKRX63N_GCC
-	url = https://github.com/GerryFerdinandus/Board-Support-Package-for-YRDKRX63N.git
+[submodule "submodules/Renesas-RX-Board-Support-Package-for-YRDKRX63N"]
+	path = submodules/Renesas-RX-Board-Support-Package-for-YRDKRX63N
+	url = https://github.com/GerryFerdinandus/Renesas-RX-Board-Support-Package-for-YRDKRX63N.git
+[submodule "submodules/Renesas-RX-FreeRTOS"]
+	path = submodules/Renesas-RX-FreeRTOS
+	url = https://github.com/GerryFerdinandus/Renesas-RX-FreeRTOS.git
