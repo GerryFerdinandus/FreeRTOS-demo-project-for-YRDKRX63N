@@ -1,6 +1,5 @@
 # project name
-#PROJECT=Renesas-RX-Board-Support-Package-for-YRDKRX63N.elf
-PROJECT_NAME=Renesas-RX-Board-Support-Package-for-YRDKRX63N
+PROJECT_NAME=Renesas-RX-FreeRTOS-demo-project-for-YRDKRX63N
 
 #include path for the *.h files
 INCLUDE=\
@@ -47,6 +46,7 @@ CFLAGS=\
 	-mlittle-endian-data \
 	-mcpu=rx600 \
 	-Wall \
+	-Werror \
 	$(END)
 
 # assembler flags with gcc
