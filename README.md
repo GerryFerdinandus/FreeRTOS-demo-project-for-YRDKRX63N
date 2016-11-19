@@ -10,10 +10,11 @@ The original FreeRTOS blinky demo project is modified to make it work with GCC c
 ---
 
 ## Code Status: ##
-[![Coverity Scan Build Status](https://scan.coverity.com/projects/10835/badge.svg)](https://scan.coverity.com/projects/gerryferdinandus-renesas-rx-freertos-demo-project-for-yrdkrx63n)
-[![Build Status](https://travis-ci.org/GerryFerdinandus/Renesas-RX-FreeRTOS-demo-project-for-YRDKRX63N.svg?branch=master)](https://travis-ci.org/GerryFerdinandus/Renesas-RX-FreeRTOS-demo-project-for-YRDKRX63N)
-for Linux build.
+|Linux Build Status|Coverity Scan Build Status|
+|:--:|:--:|
+|[![Build Status](https://travis-ci.org/GerryFerdinandus/Renesas-RX-FreeRTOS-demo-project-for-YRDKRX63N.svg?branch=master)](https://travis-ci.org/GerryFerdinandus/Renesas-RX-FreeRTOS-demo-project-for-YRDKRX63N)|[![Coverity Scan Build Status](https://scan.coverity.com/projects/10835/badge.svg)](https://scan.coverity.com/projects/gerryferdinandus-renesas-rx-freertos-demo-project-for-yrdkrx63n)|
 
 ---
 
+## Other demo: ##
 The full comprehensive test demo is not implemented.
