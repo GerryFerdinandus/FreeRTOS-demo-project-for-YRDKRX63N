@@ -47,6 +47,7 @@ CFLAGS=\
 	-mcpu=rx600 \
 	-Wall \
 	-Werror \
+	-std=c99 \
 	$(END)
 
 # assembler flags with gcc
