@@ -1,15 +1,19 @@
 
 language: c
 
-#ubuntu 14.04
+# Ubuntu 14.04 container-based infrastructure
 dist: trusty
 sudo: false
 
+# Only use Linux OS build server
 os:
   - linux
 
 env:
   global:
+  #---- Coverity
+  # EMAIL_PRIVATE must be define in travis-ci 'Environment Variables'
+  # other Coverity variable are in default values
   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
   #   via the "travis encrypt" command using the project repo's public key
   - secure: "cdx8WWwoIBKxDddZKcdMD+1W33RVnunxs6A0bjMVcMJsM7mOilm4O8ZsBJJI/ncMDnX8K/3aDlPx5JYli37mLIUnc2+ZVhE3rebjNanBEpfgjWzJOUsJ1NURzXlDmgflAFr7tupVT3hc2FWwsyDVbPzjNJCphnhjtAaoIyhOcTnxvYiRPMeQLWDQqxXijghs2On05BFYoJmFfzsw7+c8H/J2icAHzDMMveKyPl78yVI3vATNKW02K52d/klyBHJpoxx1z0LU0JQlOXSWXHfbeutt8Ku/1rPKFBFcpgEk/qFWRgBAZnJOJ3HU2BuoHJOAtEwpQvxHDa/jCbDmwTf0KEEHGhZFc4wnNWlJmYZiVwlLk1R9UFkMdCojin/vhUnnA37SC/aV7/f5m58YqMr+CKcwd9IBeIdxRV6Be9yBDyRqYL48fPZPVc6IO9wZuQImPDk7GXfvpdLC4dAaycRCWEK1epOh4mFeuyDKnrRQwKPf48JtAavq+c1eGyG7G24klDmDBZ1dDv9ppShfBahyTyO6pXRIBg7e7R9/H8Xq3i1ld1Bu/gSy1GoWXCd7qBPQvkduSYtYemni6a83/OKzruTl31Ws/7iIwSRsb1jepMllJabU8TMgBxBaFnrN4PbFuSKnokOte/jblv0rJNYmOiTF3I7bW1pqfiFSSzh1Lj8="
@@ -18,9 +22,32 @@ env:
   - COVERITY_SCAN_BUILD_COMMAND="make"
   - COVERITY_SCAN_PROJECT_NAME="$TRAVIS_REPO_SLUG"
 
+  #---- SonarQube
+  # SONAR_TOKEN must be define in travis-ci 'Environment Variables'
+  - SONAR_PROJECT_KEY="GerryFerdinandus:Renesas-RX-FreeRTOS-demo-project-for-YRDKRX63N"
+  - SONAR_PROJECT_NAME="Renesas-RX-FreeRTOS-demo-project-for-YRDKRX63N"
+  - SONAR_SOURCES="src"
+  - SONAR_EXCLUSIONS="submodules"
+  - SONAR_SOURCE_ENCODING="UTF-8"
+  - SONAR_LANGUAGE="c"
+  - SONAR_PROJECT_VERSION="1.0"
+
+
+before_script:
+  - jdk_switcher use oraclejdk8
+  - java -version
+
 script:
   - source ./scripts/travisci_script.sh
 
 # No need to get all the GIT history
 git:
   depth: 1
+
+# Need to install Java for SonarQube
+addons:
+  apt:
+    packages:
+    - oracle-java8-installer
+
+# There is a Travis WebLint issue with the addons. Just ignore it.
