@@ -83,8 +83,8 @@
 //#include "rskrx64mdef.h"
 #include "yrdkrx63n.h"
 
-#define partestNUM_LEDS ( 4 )
-#define OUTPUT_PIN          (1)
+#define PARTEST_NUM_LEDS (4U)
+#define OUTPUT_PIN		(1U)
 
 long lParTestGetLEDState( unsigned long ulLED );
 
@@ -132,13 +132,13 @@ void vParTestInitialise( void )
 
 void vParTestSetLED( unsigned long ulLED, signed long xValue )
 {
-	if( ulLED < partestNUM_LEDS )
+	if( ulLED < PARTEST_NUM_LEDS )
 	{
 		if( xValue != 0 )
 		{
 			/* Turn the LED on. */
 			taskENTER_CRITICAL();
-			{
+
 				switch( ulLED )
 				{
 					case 0:	LED4 = LED_ON;
@@ -149,15 +149,17 @@ void vParTestSetLED( unsigned long ulLED, signed long xValue )
 							break;
 					case 3:	LED7 = LED_ON;
 							break;
+					default://Must be assert()
+							break;
 				}
-			}
+
 			taskEXIT_CRITICAL();
 		}
 		else
 		{
 			/* Turn the LED off. */
 			taskENTER_CRITICAL();
-			{
+
 				switch( ulLED )
 				{
 					case 0:	LED4 = LED_OFF;
@@ -168,9 +170,11 @@ void vParTestSetLED( unsigned long ulLED, signed long xValue )
 							break;
 					case 3:	LED7 = LED_OFF;
 							break;
+					default://Must be assert()
+							break;
 				}
 
-			}
+
 			taskEXIT_CRITICAL();
 		}
 	}
@@ -179,10 +183,10 @@ void vParTestSetLED( unsigned long ulLED, signed long xValue )
 
 void vParTestToggleLED( unsigned long ulLED )
 {
-	if( ulLED < partestNUM_LEDS )
+	if( ulLED < PARTEST_NUM_LEDS )
 	{
 		taskENTER_CRITICAL();
-		{
+
 			if( lParTestGetLEDState( ulLED ) != 0x00 )
 			{
 				vParTestSetLED( ulLED, 0 );
@@ -191,7 +195,7 @@ void vParTestToggleLED( unsigned long ulLED )
 			{
 				vParTestSetLED( ulLED, 1 );
 			}
-		}
+
 		taskEXIT_CRITICAL();
 	}
 }
@@ -201,7 +205,7 @@ long lParTestGetLEDState( unsigned long ulLED )
 {
 long lReturn = pdTRUE;
 
-	if( ulLED < partestNUM_LEDS )
+	if( ulLED < PARTEST_NUM_LEDS )
 	{
 		switch( ulLED )
 		{
@@ -224,6 +228,8 @@ long lReturn = pdTRUE;
 						{
 							lReturn =  pdFALSE;
 						}
+						break;
+			default://Must be assert()
 						break;
 		}
 	}

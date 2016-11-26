@@ -98,26 +98,31 @@ void vApplicationMallocFailedHook( void )
 	timers, and semaphores.  The size of the FreeRTOS heap is set by the
 	configTOTAL_HEAP_SIZE configuration constant in FreeRTOSConfig.h. */
 	taskDISABLE_INTERRUPTS();
-	for( ;; );
+	for( ;; )
+	{
+	// empty loop
+	}
+
 }
 /*-----------------------------------------------------------*/
 
-void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
+void vApplicationStackOverflowHook(__attribute__ ((unused)) TaskHandle_t pxTask, __attribute__ ((unused)) char *pcTaskName )
 {
-	( void ) pcTaskName;
-	( void ) pxTask;
 
 	/* Run time stack overflow checking is performed if
 	configCHECK_FOR_STACK_OVERFLOW is defined to 1 or 2.  This hook
 	function is called if a stack overflow is detected. */
 	taskDISABLE_INTERRUPTS();
-	for( ;; );
+	for( ;; )
+	{
+	// empty loop
+	}
 }
 /*-----------------------------------------------------------*/
 
 void vApplicationIdleHook( void )
 {
-volatile size_t xFreeHeapSpace;
+	size_t xFreeHeapSpace;
 
 	/* This is just a trivial example of an idle hook.  It is called on each
 	cycle of the idle task.  It must *NOT* attempt to block.  In this case the
@@ -126,10 +131,7 @@ volatile size_t xFreeHeapSpace;
 	management options.  If there is a lot of heap memory free then the
 	configTOTAL_HEAP_SIZE value in FreeRTOSConfig.h can be reduced to free up
 	RAM. */
-	xFreeHeapSpace = xPortGetFreeHeapSize();
-
-	/* Remove compiler warning about xFreeHeapSpace being set but never used. */
-	( void ) xFreeHeapSpace;
+	*(volatile size_t *)(&xFreeHeapSpace) =  xPortGetFreeHeapSize();
 }
 /*-----------------------------------------------------------*/
 
@@ -143,17 +145,17 @@ void vApplicationTickHook( void )
 
 void vAssertCalled( void )
 {
-volatile unsigned long ul = 0;
+unsigned long ul = 0;
 
 	taskENTER_CRITICAL();
-	{
+
 		/* Use the debugger to set ul to a non-zero value in order to step out
 		of this function to determine why it was called. */
-		while( ul == 0 )
+		while(*(volatile unsigned long *)(&ul) == 0 )
 		{
 			portNOP();
 		}
-	}
+
 	taskEXIT_CRITICAL();
 }
 /*-----------------------------------------------------------*/
@@ -162,7 +164,8 @@ volatile unsigned long ul = 0;
 This allows the application to choose the tick interrupt source. */
 void vApplicationSetupTimerInterrupt( void )
 {
-const uint32_t ulEnableRegisterWrite = 0xA50BUL, ulDisableRegisterWrite = 0xA500UL;
+const uint32_t ulEnableRegisterWrite = 0xA50BUL;
+const uint32_t ulDisableRegisterWrite = 0xA500UL;
 
     /* Disable register write protection. */
     SYSTEM.PRCR.WORD = ulEnableRegisterWrite;
