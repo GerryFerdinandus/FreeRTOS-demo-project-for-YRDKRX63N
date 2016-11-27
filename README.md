@@ -10,9 +10,9 @@ The original FreeRTOS blinky demo project is modified to make it work with GCC c
 ---
 
 ## Code Status: ##
-|Linux Build Status|Coverity Scan Build Status|
-|:--:|:--:|
-|[![Build Status](https://travis-ci.org/GerryFerdinandus/Renesas-RX-FreeRTOS-demo-project-for-YRDKRX63N.svg?branch=master)](https://travis-ci.org/GerryFerdinandus/Renesas-RX-FreeRTOS-demo-project-for-YRDKRX63N)|[![Coverity Scan Build Status](https://scan.coverity.com/projects/10835/badge.svg)](https://scan.coverity.com/projects/gerryferdinandus-renesas-rx-freertos-demo-project-for-yrdkrx63n)|
+|Linux Build Status|Coverity Scan Status|SonarQube Status|
+|:--:|:--:|:--:|
+|[![Build Status](https://travis-ci.org/GerryFerdinandus/Renesas-RX-FreeRTOS-demo-project-for-YRDKRX63N.svg?branch=master)](https://travis-ci.org/GerryFerdinandus/Renesas-RX-FreeRTOS-demo-project-for-YRDKRX63N)|[![Coverity Scan Status](https://scan.coverity.com/projects/10835/badge.svg)](https://scan.coverity.com/projects/gerryferdinandus-renesas-rx-freertos-demo-project-for-yrdkrx63n)|[![Quality Gate](https://sonarqube.com/api/badges/gate?key=GerryFerdinandus%3ARenesas-RX-FreeRTOS-demo-project-for-YRDKRX63N)](https://sonarqube.com/dashboard/index/GerryFerdinandus%3ARenesas-RX-FreeRTOS-demo-project-for-YRDKRX63N)|
 
 ---
 
