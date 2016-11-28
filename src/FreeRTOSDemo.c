@@ -43,6 +43,8 @@ void vApplicationMallocFailedHook( void );
 void vApplicationIdleHook( void );
 void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName );
 void vApplicationTickHook( void );
+void vAssertCalled( void );
+void vApplicationSetupTimerInterrupt( void );
 
 extern void main_blinky(void);
 
@@ -164,8 +166,8 @@ unsigned long ul = 0;
 This allows the application to choose the tick interrupt source. */
 void vApplicationSetupTimerInterrupt( void )
 {
-const uint32_t ulEnableRegisterWrite = 0xA50BUL;
-const uint32_t ulDisableRegisterWrite = 0xA500UL;
+const uint16_t ulEnableRegisterWrite = 0xA50BU;
+const uint16_t ulDisableRegisterWrite = 0xA500U;
 
     /* Disable register write protection. */
     SYSTEM.PRCR.WORD = ulEnableRegisterWrite;
